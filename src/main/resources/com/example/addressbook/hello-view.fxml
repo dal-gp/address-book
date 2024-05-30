@@ -20,7 +20,8 @@
   You must agree to the following terms and conditions before you can use the application."
     wrapText="true"/>
     <TextArea fx:id="termsAndCondtionsTextArea" wrapText="true" editable="false"/>
-    <CheckBox fx:id="agreeCheckBox" text="I agree to the terms and conditions."/>
+    <CheckBox fx:id="agreeCheckBox" text="I agree to the terms and conditions."
+                onAction="#onAgreeCheckBoxClick"/>
     <HBox alignment="BOTTOM_RIGHT" spacing="10">
 <!--          style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed"-->
         <Button prefWidth="60" text="Cancel"/>
