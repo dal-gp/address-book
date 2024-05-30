@@ -8,6 +8,7 @@ public class MockContactDAO implements IContactDAO{
     public static int autoIncrementedId = 0;
 
     public MockContactDAO() {
+        this.contacts = new ArrayList<>();
         addContact(new Contact(
                 "John", "Doe", "Johndoe@example.com", "0423423423"));
         addContact(new Contact(
