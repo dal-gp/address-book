@@ -1,5 +1,6 @@
 package com.example.addressbook;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -68,6 +69,22 @@ public class MainController {
 //                }
 //            }
         };
+    }
+
+    @FXML
+    public void onEditConfirm(ActionEvent actionEvent) {
+        Contact selectedContact = contactsListView.getSelectionModel().getSelectedItem();
+        if(selectedContact != null){
+            selectedContact.setFirstName(firstNameTextField.getText());
+            selectedContact.setLastName(lastNameTextField.getText());
+            selectedContact.setEmail(emailTextField.getText());
+            selectedContact.setPhone(phoneTextField.getText());
+
+            contactDAO.updateContact(selectedContact);
+
+            contactsListView.getItems().clear();
+            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+        }
     }
 
 //    private void selectContact(Contact contact) {

@@ -39,7 +39,7 @@
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="phoneTextField"/>
             </GridPane>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button fx:id="confirmButton" text="Confirm"/>
+                <Button fx:id="confirmButton" text="Confirm" onAction="#onEditConfirm"/>
                 <Button fx:id="cancelButton" text="Cancel"/>
                 <Button fx:id="deleteButton" text="Delete"/>
             </HBox>
