@@ -98,6 +98,22 @@ public class MainController {
         }
     }
 
+    @FXML
+    public void onAdd(ActionEvent actionEvent) {
+        Contact newContact = new Contact("New", "Contact", ", ", "");
+        // add new contact to the database
+        contactDAO.addContact(newContact);
+
+        // sync the contacts list view with the contacts in the database
+        contactsListView.getItems().clear();
+        contactsListView.getItems().addAll(contactDAO.getAllContacts());
+
+        // select new contact in the list view
+        // and focus the first name tet field
+        contactsListView.getSelectionModel().select(newContact);
+        firstNameTextField.requestFocus();
+    }
+
 //    private void selectContact(Contact contact) {
 //        contactsListView.getSelectionModel().select(contact);
 //        firstNameTextField.setText(contact.getFirstName());
