@@ -114,6 +114,20 @@ public class MainController {
         firstNameTextField.requestFocus();
     }
 
+    @FXML
+    public void onCancel(ActionEvent actionEvent) {
+        Contact selectedContact = contactsListView.getSelectionModel().getSelectedItem();
+        if(selectedContact != null) {
+            // since contact hasn't been modified,
+            // re-select it to refresh the text fields
+            contactsListView.getSelectionModel().select(selectedContact);
+            firstNameTextField.setText(selectedContact.getFirstName());
+            lastNameTextField.setText(selectedContact.getLastName());
+            emailTextField.setText(selectedContact.getEmail());
+            phoneTextField.setText(selectedContact.getPhone());
+        }
+    }
+
 //    private void selectContact(Contact contact) {
 //        contactsListView.getSelectionModel().select(contact);
 //        firstNameTextField.setText(contact.getFirstName());
