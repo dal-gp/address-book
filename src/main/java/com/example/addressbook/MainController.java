@@ -87,6 +87,17 @@ public class MainController {
         }
     }
 
+    @FXML
+    public void onDelete(ActionEvent actionEvent) {
+        Contact selectedContact = contactsListView.getSelectionModel().getSelectedItem();
+        if(selectedContact != null) {
+            contactDAO.deleteContact(selectedContact);
+
+            contactsListView.getItems().clear();
+            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+        }
+    }
+
 //    private void selectContact(Contact contact) {
 //        contactsListView.getSelectionModel().select(contact);
 //        firstNameTextField.setText(contact.getFirstName());
