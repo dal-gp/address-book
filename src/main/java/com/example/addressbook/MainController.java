@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class MainController {
     private MockContactDAO contactDAO;
@@ -43,27 +42,40 @@ public class MainController {
                 super.updateItem(contact, empty);
                 if(empty || contact == null || contact.getFullName() == null) {
                     setText(null);
-                    super.setOnMouseClicked(e -> onContactSelected(e));
+//                    super.setOnMouseClicked(e -> onContactSelected(e));
+                    super.setOnMouseClicked(mouseEvent -> {
+//                        ListCell<Contact> clickedCell = (ListCell<Contact>) mouseEvent.getSource();
+//                        Contact selectedContact = clickedCell.getItem();
+                        Contact selectedContact = contactsListView.getSelectionModel().getSelectedItem();
+                        if(selectedContact != null) {
+//                            contactsListView.getSelectionModel().select(selectedContact);
+                            firstNameTextField.setText(selectedContact.getFirstName());
+                            lastNameTextField.setText(selectedContact.getLastName());
+                            emailTextField.setText(selectedContact.getEmail());
+                            phoneTextField.setText(selectedContact.getPhone());
+                        }
+                    });
                 }else{
+                    setText(contact.getFullName());
                 }
             }
 
-            private void onContactSelected(MouseEvent e) {
-                ListCell<Contact> clickedCell = (ListCell<Contact>) e.getSource();
-                Contact selectedContact = clickedCell.getItem();
-                if(selectedContact != null) {
-                    selectContact(selectedContact);
-                }
-            }
+//            private void onContactSelected(MouseEvent e) {
+//                ListCell<Contact> clickedCell = (ListCell<Contact>) e.getSource();
+//                Contact selectedContact = clickedCell.getItem();
+//                if(selectedContact != null) {
+//                    selectContact(selectedContact);
+//                }
+//            }
         };
     }
 
-    private void selectContact(Contact contact) {
-        contactsListView.getSelectionModel().select(contact);
-        firstNameTextField.setText(contact.getFirstName());
-        lastNameTextField.setText(contact.getLastName());
-        emailTextField.setText(contact.getEmail());
-        phoneTextField.setText(contact.getPhone());
-    }
+//    private void selectContact(Contact contact) {
+//        contactsListView.getSelectionModel().select(contact);
+//        firstNameTextField.setText(contact.getFirstName());
+//        lastNameTextField.setText(contact.getLastName());
+//        emailTextField.setText(contact.getEmail());
+//        phoneTextField.setText(contact.getPhone());
+//    }
 
 }
