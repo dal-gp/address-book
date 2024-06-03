@@ -22,7 +22,7 @@
             <ListView fx:id="contactsListView"/>
             <Button fx:id="newButton" maxWidth="Infinity" text="New" onAction="#onAdd"/>
         </VBox>
-        <VBox prefWidth="400.0" spacing="10">
+        <VBox prefWidth="400.0" spacing="10" fx:id="contactContainer">
             <Label text="Enter the contact's details below."/>
             <GridPane hgap="5.0" vgap="5.0">
                 <columnConstraints>

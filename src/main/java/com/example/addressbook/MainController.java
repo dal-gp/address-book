@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class MainController {
     private MockContactDAO contactDAO;
@@ -19,6 +22,8 @@ public class MainController {
     public TextField phoneTextField;
     @FXML
     public ListView<Contact> contactsListView;
+    @FXML
+    public VBox contactContainer;
 
     public MainController() {
         this.contactDAO = new MockContactDAO();
@@ -32,7 +37,23 @@ public class MainController {
         // synchronizes the contacts list view with the contacts in the database
         // and should be called whenever the contacts in the database change
         contactsListView.getItems().clear();
-        contactsListView.getItems().addAll(contactDAO.getAllContacts());
+        List<Contact> contacts = contactDAO.getAllContacts();
+        boolean hasContact = !contacts.isEmpty();
+        if(hasContact) {
+            contactsListView.getItems().addAll(contacts);
+        }
+        contactContainer.setVisible(hasContact);
+
+
+        // select first contact on startup and display its information
+        contactsListView.getSelectionModel().selectFirst(); // this will only select
+        Contact firstContact = contactsListView.getSelectionModel().getSelectedItem();
+        if(firstContact != null) {
+            firstNameTextField.setText(firstContact.getFirstName());
+            lastNameTextField.setText(firstContact.getLastName());
+            emailTextField.setText(firstContact.getEmail());
+            phoneTextField.setText(firstContact.getPhone());
+        }
     }
 
     private ListCell<Contact> renderCell(ListView<Contact> contactsListView) {
@@ -94,7 +115,13 @@ public class MainController {
             contactDAO.deleteContact(selectedContact);
 
             contactsListView.getItems().clear();
-            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+            List<Contact> contacts = contactDAO.getAllContacts();
+            boolean hasContact = !contacts.isEmpty();
+            if(hasContact){
+                contactsListView.getItems().addAll(contacts);
+            }
+            contactContainer.setVisible(hasContact);
+
         }
     }
 
@@ -106,7 +133,12 @@ public class MainController {
 
         // sync the contacts list view with the contacts in the database
         contactsListView.getItems().clear();
-        contactsListView.getItems().addAll(contactDAO.getAllContacts());
+        List<Contact> contacts = contactDAO.getAllContacts();
+        boolean hasContact = !contacts.isEmpty();
+        if(hasContact){
+            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+        }
+        contactContainer.setVisible(hasContact);
 
         // select new contact in the list view
         // and focus the first name tet field
