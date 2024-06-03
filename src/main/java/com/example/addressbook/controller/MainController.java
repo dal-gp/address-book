@@ -151,13 +151,17 @@ public class MainController {
         List<Contact> contacts = contactDAO.getAllContacts();
         boolean hasContact = !contacts.isEmpty();
         if(hasContact){
-            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+            contactsListView.getItems().addAll(contacts);
         }
         contactContainer.setVisible(hasContact);
 
         // select new contact in the list view
         // and focus the first name tet field
         contactsListView.getSelectionModel().select(newContact);
+        firstNameTextField.setText(newContact.getFirstName());
+        lastNameTextField.setText(newContact.getLastName());
+        emailTextField.setText(newContact.getEmail());
+        phoneTextField.setText(newContact.getPhone());
         firstNameTextField.requestFocus();
     }
 
