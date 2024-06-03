@@ -103,8 +103,14 @@ public class MainController {
 
             contactDAO.updateContact(selectedContact);
 
+            Contact currentContact = contactsListView.getSelectionModel().getSelectedItem();
+
             contactsListView.getItems().clear();
-            contactsListView.getItems().addAll(contactDAO.getAllContacts());
+
+            List<Contact> contacts = contactDAO.getAllContacts();
+            contactsListView.getItems().addAll(contacts);
+            Contact nextContact = contacts.contains(currentContact) ? currentContact : contacts.get(0);
+            contactsListView.getSelectionModel().select(nextContact);
         }
     }
 
@@ -114,14 +120,20 @@ public class MainController {
         if(selectedContact != null) {
             contactDAO.deleteContact(selectedContact);
 
+            Contact currentContact = contactsListView.getSelectionModel().getSelectedItem();
             contactsListView.getItems().clear();
             List<Contact> contacts = contactDAO.getAllContacts();
             boolean hasContact = !contacts.isEmpty();
             if(hasContact){
                 contactsListView.getItems().addAll(contacts);
+                Contact nextContact = contacts.contains(currentContact) ? currentContact : contacts.get(0);
+                contactsListView.getSelectionModel().select(nextContact);
+                firstNameTextField.setText(nextContact.getFirstName());
+                lastNameTextField.setText(nextContact.getLastName());
+                emailTextField.setText(nextContact.getEmail());
+                phoneTextField.setText(nextContact.getPhone());
             }
             contactContainer.setVisible(hasContact);
-
         }
     }
 
