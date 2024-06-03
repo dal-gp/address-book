@@ -1,7 +1,8 @@
 package com.example.addressbook.controller;
 
 import com.example.addressbook.model.Contact;
-import com.example.addressbook.model.MockContactDAO;
+import com.example.addressbook.model.IContactDAO;
+import com.example.addressbook.model.SqliteContactDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -12,7 +13,7 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 
 public class MainController {
-    private MockContactDAO contactDAO;
+    private IContactDAO contactDAO;
 
     @FXML
     public TextField firstNameTextField;
@@ -28,7 +29,7 @@ public class MainController {
     public VBox contactContainer;
 
     public MainController() {
-        this.contactDAO = new MockContactDAO();
+        this.contactDAO = new SqliteContactDAO();
     }
 
     @FXML
