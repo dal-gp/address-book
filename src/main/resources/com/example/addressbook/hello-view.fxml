@@ -9,7 +9,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.HBox?>
 <VBox alignment="TOP_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.addressbook.HelloController">
+      fx:controller="com.example.addressbook.controller.HelloController">
 <!--      style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed"-->
 
     <padding>

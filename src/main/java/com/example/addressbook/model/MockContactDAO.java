@@ -1,9 +1,9 @@
-package com.example.addressbook;
+package com.example.addressbook.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockContactDAO implements IContactDAO{
+public class MockContactDAO implements IContactDAO {
     private List<Contact> contacts;
     public static int autoIncrementedId = 0;
 
