@@ -19,6 +19,8 @@ public class HelloController {
     @FXML
     public Button nextButton;
     @FXML
+    public Button cancelButton;
+    @FXML
     private Label welcomeText;
 
     @FXML
@@ -59,5 +61,11 @@ public class HelloController {
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         Stage stage = (Stage) nextButton.getScene().getWindow();
         stage.setScene(scene);
+    }
+
+    @FXML
+    public void onCancelButtonClick() {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }

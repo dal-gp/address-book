@@ -24,7 +24,7 @@
                 onAction="#onAgreeCheckBoxClick"/>
     <HBox alignment="BOTTOM_RIGHT" spacing="10">
 <!--          style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed"-->
-        <Button prefWidth="60" text="Cancel"/>
+        <Button fx:id="cancelButton" onAction="#onCancelButtonClick" prefWidth="60" text="Cancel"/>
         <Button fx:id="nextButton" onAction="#onNextButtonClick" prefWidth="60" text="Next" disable="true"/>
     </HBox>
     <Label fx:id="welcomeText"/>
