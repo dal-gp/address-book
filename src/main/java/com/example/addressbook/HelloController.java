@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -20,8 +19,6 @@ public class HelloController {
     public Button nextButton;
     @FXML
     public Button cancelButton;
-    @FXML
-    private Label welcomeText;
 
     @FXML
     public void initialize() {
@@ -42,11 +39,6 @@ public class HelloController {
                 Lorem sed risus ultricies tristique nulla aliquet.
                 Elementum nibh tellus molestie nunc non blandit massa.
                 """);
-    }
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to the Address Book Application!");
     }
 
     @FXML

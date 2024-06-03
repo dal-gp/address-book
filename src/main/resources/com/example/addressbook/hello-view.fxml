@@ -27,6 +27,4 @@
         <Button fx:id="cancelButton" onAction="#onCancelButtonClick" prefWidth="60" text="Cancel"/>
         <Button fx:id="nextButton" onAction="#onNextButtonClick" prefWidth="60" text="Next" disable="true"/>
     </HBox>
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
 </VBox>
